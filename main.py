@@ -1,12 +1,7 @@
 import pySudoku
 # import os
 from VotingSystem import *
-from Prover import *
-from Voter import *
 
-from Client import *
-from Server import *
-import random
 from tinyec import registry
 import DES
 import hashlib, secrets, binascii
@@ -14,6 +9,10 @@ import hashlib, secrets, binascii
 from bot import *
 
 from Crypto.Cipher import *
+
+# Anatoli Kot 324413756
+# Eden Barsheshet 203531918
+# Yuval Varshavsky 207326703
 
 
 
@@ -47,6 +46,5 @@ while(m > 0):
 
 Voting_System.getStatus()
 
-# BOT = bot()
-# BOT.send(str(547905391),"wow1123")
+
 
