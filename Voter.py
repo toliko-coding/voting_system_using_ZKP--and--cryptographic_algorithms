@@ -79,15 +79,12 @@ class Voter(object):
     def makeVote(self,choose):
 
         if choose == "Republic":
-            msg = b'Republic' 
-        
-        if choose == "Democrat":
-            msg = b'Democrat' 
+            msg = b'Republic'
+        elif choose == "Democrat":
+            msg = b'Democrat'
+        else:
+            raise ValueError(f"Invalid vote choice: {choose!r}")
 
-
-        
-        # msg = b'the book that changeed my life. J.K Rowling' 
-            
         print("original msg:", msg)
         print()
         # privKey = secrets.randbelow(curve.field.n)
@@ -102,7 +99,7 @@ class Voter(object):
             'authTag': binascii.hexlify(encryptedMsg[2]),
             'ciphertextPubKey': hex(encryptedMsg[3].x) + hex(encryptedMsg[3].y % 2)[2:]
         }
-        print("encrypted msg:", encryptedMsgObj)
+        # print("encrypted msg:", encryptedMsgObj)
         print()
         self.myVote = encryptedMsg
         self.UpdateVoted()

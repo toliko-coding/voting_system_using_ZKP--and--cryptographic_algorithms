@@ -45,6 +45,12 @@ class VotingSystem:
         decryptedMsg = DES.decrypt_ECC(msg, key)
         return decryptedMsg
 
+    def promptChoice(self):
+        choose = input("Please Choose who you want to vote (Democrat , Republic)\n")
+        while choose not in ("Democrat", "Republic"):
+            choose = input("Invalid choice, please type Democrat or Republic\n")
+        return choose
+
     def addVoter(self, id , phone):
         excist = False
         for i in self.voters:
@@ -63,7 +69,7 @@ class VotingSystem:
                         
                     print("LASSST choose = " , lastchoose)
                     center = input("Please Choose Voting Center ( 1 , 2 )\n")
-                    choose = input("Please Choose who you want to vote (Democrat , Republic)")
+                    choose = self.promptChoice()
                     if choose == "Democrat":
                         self.incD()
                         print("inc")
@@ -72,16 +78,16 @@ class VotingSystem:
                         print("inc")
                         
 
-                    self.voters[-1].makeVote(choose)
-                    self.voters[-1].updateCenter(center)
+                    self.voters[index].makeVote(choose)
+                    self.voters[index].updateCenter(center)
                     print("Thank You\n")
 
-        if excist == False:       
+        if excist == False:
             self.voters.append(Voter(id,phone,self.curveID))
             if(self.voters[-1].Veriffie()):
                 print("ZNK is good !\n")
                 center = input("Please Choose Voting Center ( 1 , 2 )\n")
-                choose = input("Please Choose who you want to vote (Democrat , Republic)")
+                choose = self.promptChoice()
                 if choose == "Democrat":
                     self.incD()
                     print("inc")
